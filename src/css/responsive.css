@@ -3,8 +3,12 @@
  width: 90%;
  padding: 40px 0;
 }
- #header.fixed a {
- color: #000;
+ #header.fixed .primary-nav li a {
+ color: #fff;
+ opacity:.8;
+}
+#header.fixed .primary-nav li a:hover {
+  opacity:1;
 }
  .nav-toggle {
  display: block;
