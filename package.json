@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Mango Web Design",
   "scripts": {
-    "start": "babel-node buildScripts/srcServer.js"
+    "start": "babel-node buildScripts/srcServer.js",
+    "deploy": "surge ./src"
   },
   "author": "Kyle Leighton",
   "license": "MIT",

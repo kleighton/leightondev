@@ -1,85 +1,56 @@
-/* 
+$(document).ready(function() {
+	// Header Scroll
+	$(window).on('scroll', function() {
+		var scroll = $(window).scrollTop();
 
-Template 2089 Meteor
+		if (scroll >= 50) {
+			$('#header').addClass('fixed');
+		} else {
+			$('#header').removeClass('fixed');
+		}
+	});
 
-http://www.tooplate.com/view/2089-meteor
+	// Fancybox
+	$('.work-box').fancybox();
 
-*/
+	// Flexslider
+	$('.flexslider').flexslider({
+		animation: "fade",
+		directionNav: false,
+	});
 
-jQuery(document).ready(function($) {
+	// Page Scroll
+	var sections = $('section')
+		nav = $('nav[role="navigation"]');
 
-	'use strict';
+	$(window).on('scroll', function () {
+	  	var cur_pos = $(this).scrollTop();
+	  	sections.each(function() {
+	    	var top = $(this).offset().top - 76
+	        	bottom = top + $(this).outerHeight();
+	    	if (cur_pos >= top && cur_pos <= bottom) {
+	      		nav.find('a').removeClass('active');
+	      		nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
+	    	}
+	  	});
+	});
+	nav.find('a').on('click', function () {
+	  	var $el = $(this)
+	    	id = $el.attr('href');
+		$('html, body').animate({
+			scrollTop: $(id).offset().top - 75
+		}, 500);
+	  return false;
+	});
 
-
-        $('.counter').each(function() {
-          var $this = $(this),
-              countTo = $this.attr('data-count');
-          
-          $({ countNum: $this.text()}).animate({
-            countNum: countTo
-          },
-
-          {
-
-            duration: 8000,
-            easing:'linear',
-            step: function() {
-              $this.text(Math.floor(this.countNum));
-            },
-            complete: function() {
-              $this.text(this.countNum);
-              //alert('finished');
-            }
-
-          });  
-          
-        });
-
-
-
-        $(".b1").click(function () {
-            $(".pop").fadeIn(300);
-            
-        });
-		
-		$(".b2").click(function () {
-            $(".pop2").fadeIn(300);
-            
-        });
-		
-		$(".b3").click(function () {
-            $(".pop3").fadeIn(300);
-            
-        });
-
-        $(".pop > span, .pop").click(function () {
-            $(".pop").fadeOut(300);
-        });
-		
-		$(".pop2 > span, .pop2").click(function () {
-            $(".pop2").fadeOut(300);
-        });
-		
-		$(".pop3 > span, .pop3").click(function () {
-            $(".pop3").fadeOut(300);
-        });
-
-
-        $(window).on("scroll", function() {
-            if($(window).scrollTop() > 100) {
-                $(".header").addClass("active");
-            } else {
-                //remove the background property so it comes transparent again (defined in your css)
-               $(".header").removeClass("active");
-            }
-        });
-
-
-	/************** Mixitup (Filter Projects) *********************/
-    	$('.projects-holder').mixitup({
-            effects: ['fade','grayscale'],
-            easing: 'snap',
-            transitionSpeed: 400
-        });
-
+	// Mobile Navigation
+	$('.nav-toggle').on('click', function() {
+		$(this).toggleClass('close-nav');
+		nav.toggleClass('open');
+		return false;
+	});	
+	nav.find('a').on('click', function() {
+		$('.nav-toggle').toggleClass('close-nav');
+		nav.toggleClass('open');
+	});
 });
