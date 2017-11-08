@@ -5,8 +5,12 @@ $(document).ready(function() {
 
 		if (scroll >= 50) {
 			$('#header').addClass('fixed');
+			$('#whiteIcon').hide();
+			$('#blueIcon').show();
 		} else {
 			$('#header').removeClass('fixed');
+			$('#whiteIcon').show();
+			$('#blueIcon').hide();
 		}
 	});
 

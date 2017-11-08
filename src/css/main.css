@@ -132,21 +132,25 @@ ul li {
 	transition: padding 0.3s;
 }
 #header .logo {
-	float: left;
-	font-size:24px;
-	font-weight:700;
+	float:left;
+	font-size:20px;
+	font-weight:600;
 	color:#fff;
 	text-decoration:none;
 	text-transform:uppercase;
-	letter-spacing:7px;
+	letter-spacing:1px;
+}
+#header .logo span {
+	color:#00aeda;
 }
 #header.fixed {
 	background-color: #fff;
 	box-shadow:0 0 8px rgba(0,0,0,.2);
 	transition:.2s ease;
 }
-#header.fixed a {
-	color: #000;
+#header.fixed .logo {
+	color: #444;
+	font-weight:600;
 }
 #header.fixed .header-content {
 	border-bottom: 0;
@@ -155,6 +159,9 @@ ul li {
 #header.fixed .nav-toggle {
 	top: 18px;
 	color: #000;
+}
+#header.fixed .navigation a {
+	color:#444;
 }
 .navigation.open {
 	opacity: 0.9;
@@ -321,7 +328,7 @@ ul li {
 -------------------------------------------------------------------------------*/
 
 .banner {
-	background-image: url(../images/banner.jpg);
+	background-image: url(../images/banner2.png);
 	background-position: center top;
 	background-repeat: no-repeat;
 	-moz-background-size: cover;
@@ -329,6 +336,16 @@ ul li {
 	-webkit-background-size: cover;
 	background-size: cover;
 	min-height: 750px;
+	position:relative;
+}
+.banner:before {
+	content:'';
+	position: absolute;
+	top:0;
+	left: 0;
+	height: 100%;
+	width:100%;
+	background:rgba(0,0,0,.6);
 }
 .banner-text {
 	padding-top: 22%;
@@ -380,7 +397,10 @@ ul li {
 .services .icon {
 	color: #00aeda;
 	font-size: 50px;
-	padding-left: 15px;
+}
+.services i {
+	color:#00aeda;
+	font-size:50px;
 }
 /* ------------------------------------------------------------------------------
 	 Works
@@ -468,6 +488,7 @@ ul li {
 .person {
 	max-width: 270px;
 	text-align: center;
+	margin:0 auto;
 }
 .person img {
 	width: 150px;
