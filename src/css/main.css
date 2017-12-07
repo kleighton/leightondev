@@ -64,6 +64,14 @@ h5 {
 	transition:.2s ease;
 	color:#fff;
 }
+.btn-large#submitContactForm {
+	display: block;
+	width:140px;
+	text-align: center;
+	margin:0 auto;
+	cursor:pointer;
+	transition:.9s ease;
+}
 .btn-large:hover {
 	background:#008eba;
 	color:#fff;
@@ -680,4 +688,21 @@ ul li {
 	color: #e84545;
 	font-size: 11px;
 	margin: 0 2px;
+}
+
+/**** FANCY BOX SITE LINK BUTTON ****/
+.viewSiteButton {
+ font-size:15px;
+ position: absolute;
+ right:25px;
+ top:-15px;
+ background:#222;
+ color:#fff !important;
+ border-radius:20px;
+ padding:3px 10px;
+ border:2px solid #fff;
+ box-shadow:0 0 5px #444;
+}
+.fancybox-title {
+	position:unset;
 }

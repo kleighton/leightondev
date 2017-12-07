@@ -1,6 +1,6 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	// Header Scroll
-	$(window).on('scroll', function() {
+	$(window).on('scroll', function () {
 		var scroll = $(window).scrollTop();
 
 		if (scroll >= 50) {
@@ -14,8 +14,19 @@ $(document).ready(function() {
 		}
 	});
 
-	// Fancybox
-	$('.work-box').fancybox();
+	
+	$('.work-box').fancybox({
+		beforeShow: function () {
+			if (this.dataLink){
+				this.title += '<a href="' + this.dataLink + '" target="_blank" class="viewSiteButton">View Site</a> ';
+			};
+	},
+		helpers : {
+			title : {
+					type: 'inside'
+			}
+	}  
+	});
 
 	// Flexslider
 	$('.flexslider').flexslider({
@@ -25,43 +36,43 @@ $(document).ready(function() {
 
 	// Page Scroll
 	var sections = $('section')
-		nav = $('nav[role="navigation"]');
+	nav = $('nav[role="navigation"]');
 
 	$(window).on('scroll', function () {
-	  	var cur_pos = $(this).scrollTop();
-	  	sections.each(function() {
-	    	var top = $(this).offset().top - 76
-	        	bottom = top + $(this).outerHeight();
-	    	if (cur_pos >= top && cur_pos <= bottom) {
-	      		nav.find('a').removeClass('active');
-	      		nav.find('a[href="#'+$(this).attr('id')+'"]').addClass('active');
-	    	}
-	  	});
+		var cur_pos = $(this).scrollTop();
+		sections.each(function () {
+			var top = $(this).offset().top - 76
+			bottom = top + $(this).outerHeight();
+			if (cur_pos >= top && cur_pos <= bottom) {
+				nav.find('a').removeClass('active');
+				nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+			}
+		});
 	});
 	nav.find('a').on('click', function () {
-	  	var $el = $(this)
-	    	id = $el.attr('href');
+		var $el = $(this)
+		id = $el.attr('href');
 		$('html, body').animate({
 			scrollTop: $(id).offset().top - 75
 		}, 500);
-	  return false;
+		return false;
 	});
 	$('.section-nav-btn').on('click', function () {
 		var $el = $(this)
-			id = $el.attr('href');
-	$('html, body').animate({
-		scrollTop: $(id).offset().top - 75
-	}, 500);
-	return false;
-});
+		id = $el.attr('href');
+		$('html, body').animate({
+			scrollTop: $(id).offset().top - 75
+		}, 500);
+		return false;
+	});
 
 	// Mobile Navigation
-	$('.nav-toggle').on('click', function() {
+	$('.nav-toggle').on('click', function () {
 		$(this).toggleClass('close-nav');
 		nav.toggleClass('open');
 		return false;
-	});	
-	nav.find('a').on('click', function() {
+	});
+	nav.find('a').on('click', function () {
 		$('.nav-toggle').toggleClass('close-nav');
 		nav.toggleClass('open');
 	});
